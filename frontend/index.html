@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWT Taller - Login & Registro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔐 JWT Taller</h1>
+            <p class="subtitle">Entendiendo JSON Web Tokens</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Authentication Section -->
+            <section class="auth-section" id="authSection">
+                <div class="auth-container">
+                    <!-- Tabs -->
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="login">Iniciar Sesión</button>
+                        <button class="tab-btn" data-tab="register">Registrarse</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <div id="login" class="tab-content active">
+                        <h2>Iniciar Sesión</h2>
+                        <form id="loginForm" class="auth-form">
+                            <div class="form-group">
+                                <label for="loginEmail">Email:</label>
+                                <input type="email" id="loginEmail" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Contraseña:</label>
+                                <input type="password" id="loginPassword" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                            <div id="loginError" class="error-message"></div>
+                        </form>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div id="register" class="tab-content">
+                        <h2>Crear Nueva Cuenta</h2>
+                        <form id="registerForm" class="auth-form">
+                            <div class="form-group">
+                                <label for="registerUsername">Nombre de Usuario:</label>
+                                <input type="text" id="registerUsername" name="username" minlength="3" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerEmail">Email:</label>
+                                <input type="email" id="registerEmail" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPassword">Contraseña:</label>
+                                <input type="password" id="registerPassword" name="password" minlength="6" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPasswordConfirm">Confirmar Contraseña:</label>
+                                <input type="password" id="registerPasswordConfirm" name="passwordConfirm" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                            <div id="registerError" class="error-message"></div>
+                            <div id="registerSuccess" class="success-message"></div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JWT Info Section (hidden until login) -->
+            <section class="jwt-info-section" id="jwtSection" style="display: none;">
+                <div class="jwt-container">
+                    <h2>📋 Información del JWT</h2>
+                    
+                    <div class="user-info">
+                        <h3>Usuario Autenticado</h3>
+                        <p><strong>ID:</strong> <span id="userId"></span></p>
+                        <p><strong>Nombre:</strong> <span id="userName"></span></p>
+                        <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                    </div>
+
+                    <div class="jwt-display">
+                        <h3>Token JWT Completo</h3>
+                        <div class="token-box">
+                            <p id="fullToken" class="token-text"></p>
+                            <button type="button" class="btn btn-small" onclick="copyToClipboard('fullToken')">
+                                Copiar Token
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="jwt-decoded">
+                        <h3>JWT Decodificado</h3>
+                        <div class="decoded-sections">
+                            <!-- Header -->
+                            <div class="jwt-part">
+                                <h4>Header (Tipo de token y algoritmo)</h4>
+                                <pre id="jwtHeader" class="code-block"></pre>
+                            </div>
+
+                            <!-- Payload -->
+                            <div class="jwt-part">
+                                <h4>Payload (Claims - Información del usuario)</h4>
+                                <pre id="jwtPayload" class="code-block"></pre>
+                            </div>
+
+                            <!-- Signature -->
+                            <div class="jwt-part">
+                                <h4>Signature (Firma - Garantiza autenticidad)</h4>
+                                <pre id="jwtSignature" class="code-block"></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="jwt-info">
+                        <h3>ℹ️ Información del Token</h3>
+                        <p><strong>Tipo:</strong> <span id="tokenType"></span></p>
+                        <p><strong>Emitido en:</strong> <span id="issuedAt"></span></p>
+                        <p><strong>Expira en:</strong> <span id="expiresAt"></span></p>
+                        <p><strong>Tiempo restante:</strong> <span id="timeRemaining"></span></p>
+                    </div>
+
+                    <div class="token-actions">
+                        <button type="button" class="btn btn-secondary" onclick="refreshAccessToken()">
+                            🔄 Renovar Access Token
+                        </button>
+                        <button type="button" class="btn btn-info" onclick="testProtectedEndpoint()">
+                            🔒 Probar Endpoint Protegido
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="logout()">
+                            🚪 Cerrar Sesión
+                        </button>
+                    </div>
+
+                    <div id="testEndpointResult"></div>
+                    <div id="refreshError" class="error-message"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Taller educativo para entender JWT | Semestre 2026-1</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jwtDecoder.js"></script>
+    <script src="js/authService.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

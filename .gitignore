@@ -1,0 +1,43 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.flattened-pom.xml
+.m2/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.swp
+*.swo
+*~
+.DS_Store
+*.class
+
+# Backend
+/backend/target/
+/backend/.classpath
+/backend/.project
+/backend/.settings/
+/backend/bin/
+
+# Frontend
+node_modules/
+dist/
+.env.local
+
+# Database
+*.sql
+*.db
+
+# System
+.DS_Store
+Thumbs.db
+*.log
