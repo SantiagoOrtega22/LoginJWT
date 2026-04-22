@@ -120,7 +120,7 @@ TallerJWT/
 
 ---
 
-## 🚀 Inicio Rápido (5 minutos)
+## 🚀 Inicio Rápido 
 
 ### Requisitos Previos
 
@@ -311,22 +311,6 @@ mysql -u root -p -e "CREATE DATABASE jwt_taller;"
 | **BCrypt** | Algoritmo de hash seguro para contraseñas |
 | **Stateless** | No requiere mantener sesiones en servidor |
 
----
-
-## 📚 Para Aprender Más
-
-- [JWT Official](https://jwt.io) - Especificación oficial
-- [Spring Security JWT](https://spring.io/projects/spring-security)
-- [RFC 7519](https://tools.ietf.org/html/rfc7519) - Estándar oficial de JWT
-- [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
-
----
-
-## 📄 Licencia
-
-Proyecto educativo - Uso libre para aprendizaje
-
----
 
 **Creado para:** Entornos de Programación 2026-1
 **Última actualización:** 22 de abril de 2026
@@ -484,22 +468,6 @@ spring.datasource.username=root
 spring.datasource.password=tuPassword
 ```
 
-## ⚠️ Notas de Seguridad
-
-### Para Desarrollo
-- Este proyecto almacena tokens en `localStorage` (NO SEGURO para producción)
-- La contraseña de MySQL es vacía por defecto
-- La clave secreta JWT es una cadena débil
-
-### Para Producción
-- ✅ Usar `httpOnly cookies` en lugar de `localStorage`
-- ✅ Usar HTTPS en lugar de HTTP
-- ✅ Cambiar la clave secreta JWT a una cadena larga y aleatoria
-- ✅ Implementar tasa de límite (rate limiting) en los endpoints
-- ✅ Usar CORS restrictivo (no `*`)
-- ✅ Implementar CSRF protection
-- ✅ Validar y sanitizar todas las entradas
-- ✅ Usar variables de entorno para credenciales
 
 ## 📊 Flujo de Autenticación
 
@@ -572,14 +540,5 @@ Payload:   {"userId": 1, "username": "user", "email": "user@example.com", "exp":
 Signature: HMACSHA256(base64Url(header) + "." + base64Url(payload), secret)
 ```
 
-## 📞 Soporte y Contacto
-
-Este es un proyecto educativo. Para dudas sobre JWT, consulta la documentación oficial en [jwt.io](https://jwt.io)
-
-## 📄 Licencia
-
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
-
----
 
 **Creado para:** Taller de Entornos de Programación - Semestre 2026-1
